@@ -1,0 +1,50 @@
+class Node {
+  int key;
+  Node left, right;
+
+  public Node(int item) {
+  key = item;
+  left = right = null;
+  }
+}
+class BinaryTree {
+  Node root;
+  public void preOrder(Node node) {
+    if (node != null) {
+      preOrder(node.left);
+      System.out.print(" " + node.key +" ");
+      preOrder(node.right);
+    }
+  }
+  public void inOrder(Node node){
+       if (node != null) {
+      System.out.print(" " + node.key +" ");
+      inOrder(node.left);
+      inOrder(node.right);
+    }
+  }
+  public void postOrder(Node node){
+       if (node != null) {
+      postOrder(node.left);
+      postOrder(node.right);
+      System.out.print(" " + node.key +" ");
+    }
+  }
+
+  public static void main(String[] args) {
+    BinaryTree tree = new BinaryTree();
+    tree.root = new Node(70);
+    tree.root.left = new Node(52);
+    tree.root.right = new Node(36);
+    tree.root.left.left = new Node(46);
+     tree.root.left.right = new Node(76);
+
+    System.out.print("\nBinary Tree preorder: ");
+    tree.preOrder(tree.root);
+    System.out.print("\nBinary Tree inorder: ");
+    tree.inOrder(tree.root);
+    System.out.print("\nBinary Tree postorder: ");
+    tree.postOrder(tree.root);
+    
+  }
+}

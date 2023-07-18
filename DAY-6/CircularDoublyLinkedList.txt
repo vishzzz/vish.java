@@ -1,0 +1,72 @@
+class CDLL{
+public class Node{
+    int x;
+    Node next;
+    Node prev;
+    
+    
+    public Node(int data){
+        this.x = data;
+        this.next = null;
+        this.prev = null;
+    }
+ }
+    public Node head = null;
+    public Node tail = null;
+    
+  void addNode(int data){
+      Node NewNode = new Node(data);
+      
+      if(head==null){
+          head = NewNode;
+          tail = NewNode;
+        }
+        else{
+            tail.next = NewNode;
+            NewNode.prev = tail;
+            tail = NewNode;
+            tail.next = head;
+            head.prev = tail;
+            
+        }
+         
+    }
+
+ void  Rdisplay(){
+     Node current = tail;
+     if(current==null){
+         System.out.print("list is empty");
+     }
+      System.out.print("Reversed:");
+     while(current!=null){
+           System.out.print(current.x + " " );  
+            current = current.prev;  
+     } 
+        System.out.println();
+     }
+ void Ndisplay(){
+     Node current = head;
+     if(current==null){
+         System.out.print("list is empty");
+     }
+     System.out.print("Normal:");
+     while(current!=null){
+           System.out.print(current.x + " " );  
+            current = current.next;  
+     } 
+        System.out.println();
+ }
+ 
+public static void main(String[] args) {
+        CDLL dList = new CDLL();
+        dList.addNode(1);  
+        dList.addNode(2);  
+        dList.addNode(3);  
+        dList.addNode(4);  
+        dList.addNode(5);  
+       //comment either one of the below two lines to view the result correctly.
+        dList.Ndisplay();  
+        dList.Rdisplay();  
+    }
+    
+}

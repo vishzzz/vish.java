@@ -1,0 +1,57 @@
+class DLL{
+public class Node{
+    int x;
+    Node next;
+    Node prev;
+    
+    
+    public Node(int data){
+        this.x = data;
+        this.next = null;
+        this.prev = null;
+    }
+ }
+    public Node head = null;
+    public Node tail = null;
+    
+  void addNode(int data){
+      Node NewNode = new Node(data);
+      
+      if(head==null){
+          head = NewNode;
+          tail = NewNode;
+        }
+        else{
+            tail.next = NewNode;
+            NewNode.prev = tail;
+            tail = NewNode;
+            
+        }
+         
+    }
+
+ void display(){
+     Node current = tail;
+     if(current==null){
+         System.out.print("list is empty");
+     }
+     while(current!=null){
+           System.out.print(current.x + " ");  
+            current = current.prev;  
+     } 
+         
+     }
+ 
+public static void main(String[] args) {
+        DLL dList = new DLL();
+        dList.addNode(1);  
+        dList.addNode(2);  
+        dList.addNode(3);  
+        dList.addNode(4);  
+        dList.addNode(5);  
+  
+        //Displays the nodes present in the list  
+        dList.display();  
+    }
+    
+}
